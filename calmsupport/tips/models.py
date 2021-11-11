@@ -51,19 +51,26 @@ class Uploads(models.Model):
     location = models.CharField(max_length=100)
     event_date = models.DateTimeField()
 
-    def save(self):
-        # self.save()
-        if self.description:
-        #    self.description = encrypts.encryptText(self.description)
-           print(self.description)
-        if self.location:
-        #    self.location = encrypts.encryptText(self.location)       
-           print(self.location)
-        print("inside save func")
+    # def save(self):
+    #     # self.save()
+    #     if self.description:
+    #     #    self.description = encrypts.encryptText(self.description)
+    #        print(self.description)
+    #     if self.location:
+    #     #    self.location = encrypts.encryptText(self.location)       
+    #        print(self.location)
+    #     print("inside save func")
         
-        return self.save()
+    #     return self.save()
 
-    
+    def save(self):
+        if self.description:
+            self.description = encrypts.encryptText(self.description)
+        if self.location:
+            self.location = encrypts.encryptText(self.location)       
+        print("inside save func")
+        return super().save()    
+
     class Meta:
         verbose_name = 'Upload'
         verbose_name_plural = 'Uploads'
@@ -80,13 +87,13 @@ class Uploads(models.Model):
     #     path = path + self.get_absolute_image_url
     #     return encrypt
 
-@receiver(post_save,sender=Uploads)
-def encrypt_image(sender, *args, **kwargs):
-    print('post save callback')
-    # file = instance.audio.path
-    print(sender.get_absolute_image_url)
-    path = settings.MEDIA_ROOT
-    path = path + sender.get_absolute_image_url
-    print(path)
-    return encryptImage(path)
+# @receiver(post_save,sender=Uploads)
+# def encrypt_image(sender, *args, **kwargs):
+#     print('post save callback')
+#     # file = instance.audio.path
+#     print(sender.get_absolute_image_url)
+#     path = settings.MEDIA_ROOT
+#     path = path + sender.get_absolute_image_url
+#     print(path)
+#     return encryptImage(path)
     # encrypts.encryptImage(sender.image, *args, **kwargs)
