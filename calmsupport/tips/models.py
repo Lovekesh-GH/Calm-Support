@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 import os
+from encryption import encrypts
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
 
 # Create your models here.
 CHOICES = (
@@ -45,6 +49,17 @@ class Uploads(models.Model):
     class Meta:
         verbose_name = 'Upload'
         verbose_name_plural = 'Uploads'
+
+    def save(self):
+        # self.save(commit=False)
+        if self.description:
+            self.description = encrypts.encryptText(self.description)
+        if self.location:
+            self.location = encrypts.encryptText(self.location)       
+        print("inside save func")
+        # print(self.image.url)
+        # if self.image:
+        #     self.image = encrypts.encryptImage(self.image.url) 
 
 
     def _str_(self):

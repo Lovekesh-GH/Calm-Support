@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+/* background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat; */
+/* background: linear-gradient(to bottom, #202020, #111119); */
+background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+height: 100vh;
+overflow: hidden;
+opacity: 0.5;
+background-color: black;
+display: -webkit-box;
+display: flex;
+}
+
+/* Here using -webkit, we make angle
+of 45 degree of falling star */
+.sky {
+position: relative;
+width: 100%;
+height: 100%;
+-webkit-transform: rotateZ(45deg);
+transform: rotateZ(45deg);
+}
+
+/* Here we are making roundabout balls */
+.star {
+position: absolute;
+left: 50%;
+top: 50%;
+height: 2px;
+border-radius: 885px;
+background: linear-gradient(-45deg,
+	#eef0f5, rgba(0, 0, 255, 0));
+
+-webkit-filter: drop-shadow(0 0 6px #eef1f8);
+filter: drop-shadow(0 0 6px #d7dff0);
+-webkit-animation: tail 3000ms ease-in-out infinite,
+	shooting 3000ms ease-in-out infinite;
+animation: tail 3000ms ease-in-out infinite,
+	shooting 3000ms ease-in-out infinite;
+}
+
+/* Here we add before and after effect to star */
+.star::before,
+.star::after {
+content: "";
+position: absolute;
+top: calc(50% - 1px);
+right: 0;
+height: 2px;
+background: linear-gradient(
+	-45deg,
+	rgba(0, 0, 255, 0),
+	#eaeef8,
+	rgba(0, 0, 255, 0)
+);
+-webkit-transform: translateX(50%) rotateZ(45deg);
+transform: translateX(50%) rotateZ(45deg);
+border-radius: 100%;
+-webkit-animation: shining 3000ms ease-in-out infinite;
+animation: shining 3000ms ease-in-out infinite;
+}
+.star::after {
+-webkit-transform: translateX(50%) rotateZ(-45deg);
+transform: translateX(50%) rotateZ(-45deg);
+}
+
+/* Here we are adding location of each
+nth-child, animations, delays, and
+before and after effects to each
+and every balls(stars) */
+.star:nth-child(1) {
+top: calc(50% - -119px);
+left: calc(50% - 43px);
+-webkit-animation-delay: 4000ms;
+animation-delay: 4000ms;
+}
+.star:nth-child(1)::before,
+.star:nth-child(1)::after {
+-webkit-animation-delay: 4000ms;
+animation-delay: 4000ms;
+}
+.star:nth-child(2) {
+top: calc(50% - -43px);
+left: calc(50% - 37px);
+-webkit-animation-delay: 5000ms;
+animation-delay: 5000ms;
+}
+.star:nth-child(2)::before,
+.star:nth-child(2)::after {
+-webkit-animation-delay: 5000ms;
+animation-delay: 5000ms;
+}
+.star:nth-child(3) {
+top: calc(50% - -40px);
+left: calc(50% - 222px);
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(3)::before,
+.star:nth-child(3)::after {
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(4) {
+top: calc(50% - -29px);
+left: calc(50% - 113px);
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(4)::before,
+.star:nth-child(4)::after {
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(5) {
+top: calc(50% - 146px);
+left: calc(50% - 112px);
+-webkit-animation-delay: 3000ms;
+animation-delay: 3000ms;
+}
+.star:nth-child(5)::before,
+.star:nth-child(5)::after {
+-webkit-animation-delay: 3000ms;
+animation-delay: 3000ms;
+}
+.star:nth-child(6) {
+top: calc(50% - -108px);
+left: calc(50% - 160px);
+-webkit-animation-delay: 3000ms;
+animation-delay: 3000ms;
+}
+.star:nth-child(6)::before,
+.star:nth-child(6)::after {
+-webkit-animation-delay: 3000ms;
+animation-delay: 3000ms;
+}
+.star:nth-child(7) {
+top: calc(50% - 52px);
+left: calc(50% - 72px);
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(7)::before,
+.star:nth-child(7)::after {
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(8) {
+top: calc(50% - -119px);
+left: calc(50% - 43px);
+-webkit-animation-delay: 4000ms;
+animation-delay: 4000ms;
+}
+.star:nth-child(8)::before,
+.star:nth-child(8)::after {
+-webkit-animation-delay: 4000ms;
+animation-delay: 4000ms;
+}
+.star:nth-child(9) {
+top: calc(50% - -43px);
+left: calc(50% - 37px);
+-webkit-animation-delay: 5000ms;
+animation-delay: 5000ms;
+}
+.star:nth-child(9)::before,
+.star:nth-child(9)::after {
+-webkit-animation-delay: 5000ms;
+animation-delay: 5000ms;
+}
+.star:nth-child(10) {
+top: calc(50% - -40px);
+left: calc(50% - 222px);
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+.star:nth-child(10)::before,
+.star:nth-child(10)::after {
+-webkit-animation-delay: 7000ms;
+animation-delay: 7000ms;
+}
+
+/* This code will help to generate
+effect in tail of star */
+@keyframes tail {
+0% {
+	width: 0;
+}
+30% {
+	width: 100px;
+}
+100% {
+	width: 0;
+}
+}
+
+/* This code will generate shining
+effect in head of star */
+@keyframes shining {
+0% {
+	width: 0;
+}
+50% {
+	width: 30px;
+}
+100% {
+	width: 0;
+}
+}
+
+/* Here we are adding webkit-animation
+to head of star for shining */
+@-webkit-keyframes shining {
+0% {
+	width: 0;
+}
+50% {
+	width: 30px;
+}
+100% {
+	width: 0;
+}
+}
+
+/* Here we are adding webkit-animation
+to tail of star */
+@-webkit-keyframes tail {
+0% {
+	width: 0;
+}
+30% {
+	width: 100px;
+}
+100% {
+	width: 0;
+}
+}
+
+/* Here we are adding webkit-animation
+for shooting effect */
+@-webkit-keyframes shooting {
+0% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+100% {
+	-webkit-transform: translateX(270px);
+	transform: translateX(270px);
+}
+}
+
+/* Here we make shooting effect */
+@keyframes shooting {
+0% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+100% {
+	-webkit-transform: translateX(270px);
+	transform: translateX(270px);
+}
+}
+.bg {
+    background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -3;
+}
+.body:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+}
+@keyframes sf-fly-by-1 {
+    from {
+        transform: translateZ(-600px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(0);
+        opacity: 0.5;
+    }
+}
+@keyframes sf-fly-by-2 {
+    from {
+        transform: translateZ(-1200px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(-600px);
+        opacity: 0.5;
+    }
+}
+@keyframes sf-fly-by-3 {
+    from {
+        transform: translateZ(-1800px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(-1200px);
+        opacity: 0.5;
+    }
+}
+.star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+    -webkit-perspective: 600px;
+    z-index: -1;
+}
+.star-field .layer {
+    box-shadow: -411px -476px #cccccc, 777px -407px #d4d4d4, -387px -477px #fcfcfc, -91px -235px #d4d4d4, 491px -460px #f7f7f7, 892px -128px #f7f7f7, 758px -277px #ededed, 596px 378px #cccccc, 647px 423px whitesmoke, 183px 389px #c7c7c7,
+        524px -237px #f0f0f0, 679px -535px #e3e3e3, 158px 399px #ededed, 157px 249px #ededed, 81px -450px #ebebeb, 719px -360px #c2c2c2, -499px 473px #e8e8e8, -158px -349px #d4d4d4, 870px -134px #cfcfcf, 446px 404px #c2c2c2,
+        440px 490px #d4d4d4, 414px 507px #e6e6e6, -12px 246px #fcfcfc, -384px 369px #e3e3e3, 641px -413px #fcfcfc, 822px 516px #dbdbdb, 449px 132px #c2c2c2, 727px 146px #f7f7f7, -315px -488px #e6e6e6, 952px -70px #e3e3e3,
+        -869px -29px #dbdbdb, 502px 80px #dedede, 764px 342px #e0e0e0, -150px -380px #dbdbdb, 654px -426px #e3e3e3, -325px -263px #c2c2c2, 755px -447px #c7c7c7, 729px -177px #c2c2c2, -682px -391px #e6e6e6, 554px -176px #ededed,
+        -85px -428px #d9d9d9, 714px 55px #e8e8e8, 359px -285px #cfcfcf, -362px -508px #dedede, 468px -265px #fcfcfc, 74px -500px #c7c7c7, -514px 383px #dbdbdb, 730px -92px #cfcfcf, -112px 287px #c9c9c9, -853px 79px #d6d6d6,
+        828px 475px #d6d6d6, -681px 13px #fafafa, -176px 209px #f0f0f0, 758px 457px #fafafa, -383px -454px #ededed, 813px 179px #d1d1d1, 608px 98px whitesmoke, -860px -65px #c4c4c4, -572px 272px #f7f7f7, 459px 533px #fcfcfc,
+        624px -481px #e6e6e6, 790px 477px #dedede, 731px -403px #ededed, 70px -534px #cccccc, -23px 510px #cfcfcf, -652px -237px whitesmoke, -690px 367px #d1d1d1, 810px 536px #d1d1d1, 774px 293px #c9c9c9, -362px 97px #c2c2c2,
+        563px 47px #dedede, 313px 475px #e0e0e0, 839px -491px #e3e3e3, -217px 377px #d4d4d4, -581px 239px #c2c2c2, -857px 72px #cccccc, -23px 340px #dedede, -837px 246px white, 170px -502px #cfcfcf, 822px -443px #e0e0e0, 795px 497px #e0e0e0,
+        -814px -337px #cfcfcf, 206px -339px #f2f2f2, -779px 108px #e6e6e6, 808px 2px #d4d4d4, 665px 41px #d4d4d4, -564px 64px #cccccc, -380px 74px #cfcfcf, -369px -60px #f7f7f7, 47px -495px #e3e3e3, -383px 368px #f7f7f7, 419px 288px #d1d1d1,
+        -598px -50px #c2c2c2, -833px 187px #c4c4c4, 378px 325px whitesmoke, -703px 375px #d6d6d6, 392px 520px #d9d9d9, -492px -60px #c4c4c4, 759px 288px #ebebeb, 98px -412px #c4c4c4, -911px -277px #c9c9c9;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+}
+.star-field .layer:nth-child(1) {
+    animation: sf-fly-by-1 5s linear infinite;
+}
+.star-field .layer:nth-child(2) {
+    animation: sf-fly-by-2 5s linear infinite;
+}
+.star-field .layer:nth-child(3) {
+    animation: sf-fly-by-3 5s linear infinite;
+}
+table td{
+    padding: 8px;
+}
+
+.main-form{
+    background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.27 );
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  border-radius: 20px;
+    display: flex;
+    flex-direction:column;
+    padding:3em;
+    justify-content:center;
+     position: absolute; /* or absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .button {
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 20px;
+  letter-spacing: 4px;
+  position: relative;
+  background-color: #16a085;
+  border: none;
+  color: #fff;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #193047;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #1abc9c;
+  color: #000;
+}
+
+.button:after {
+  content: "";
+  background: #1abc9c;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.button:focus { outline:0; }
+
+.shine, .chrome {
+  font-size: 3em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 25px;
+}
+.shine {
+  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  -webkit-background-size: 150px;
+  background-size: 150px;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: shine;
+  animation-name: shine;
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+}
+/* .chrome {
+  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  background-image: -webkit-linear-gradient(-40deg, transparent 0%, transparent 40%, #fff 50%, transparent 60%, transparent 100%);
+  -webkit-background-size: 200px;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: text;
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+} */
+@keyframes shine {
+  0%, 10% {
+    background-position: -1000px;
+  }
+  20% {
+    background-position: top left;
+  }
+  90% {
+    background-position: top right;
+  }
+  100% {
+    background-position: 1000px;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <!-- <H1>WELCOME TO CALM SUPPORT!</H1> -->
+        <!-- <div class="shine" style="text-align: right";>WELCOME TO CALM SUPPORT!</div> -->
+        <form method = "post" enctype="multipart/form-data" class="main-form"> 
+            {% csrf_token %}  
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button class="btn btn-success " type="submit">Save</button>
+            <!-- <a href="{% url 'Record' %}" class="btn btn-1">Judges</a> -->
+            <!-- <button href="{% url 'Record' %}"  type="submit">Record</button> -->
+        </form>
+    
+    <a class="btn btn-primary btn-lg" href="{% url 'Record' %}">
+        <button class="button"  style=
+        "position:absolute; 
+        margin-left:-50px;
+        left:50%;
+        width:150px;
+        bottom:0px;">
+        Record
+         
+           
+        </button>
+        </a>
+        
+    <div class="sky">
+  
+        <!-- We are making divisions, every div.
+        represent a single roundabout balls -->
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    
+    </div>
+   
+
+<div class="star-field">
+<div class="layer"></div>
+<div class="layer"></div>
+<div class="layer"></div>
+</div>
+</div>
+
+<div class="shine">WELCOME TO CALM SUPPORT!</div>
+</body>
+</html>

@@ -5,6 +5,7 @@ from tips import views
 
 urlpatterns = [
     path("", views.UploadView, name="home"),
+    path("Record", views.record, name="Record"),
 ]
 
 # urlpatterns  += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

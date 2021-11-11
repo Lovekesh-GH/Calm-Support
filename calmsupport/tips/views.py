@@ -16,4 +16,7 @@ def UploadView(request):
             context["error"] = form.errors
     
     context["form"] = UploadForm()
-    return render(request, 'index.html', context)
+    return render(request, 'home.html', context)
+
+def record(request):
+    return render(request, 'record.html', {})
