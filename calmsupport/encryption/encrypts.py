@@ -7,25 +7,25 @@ def encryptText(s):
 # key = Fernet.generate_key()
 # print(key)
 
-# def encryptImage(request):
-#     f = Fernet(Key.encode())
-#     # path = os.path.join(Settings.BASEDIR,“ /media/images”)
-#     f1 = open(request, 'rb') 
-#     # storing image data in image variable 
-#     image = f1.read() 
-#     f1.close() 
+def encryptImage(request):
+    f = Fernet(Key.encode())
+    # path = os.path.join(Settings.BASEDIR,“ /media/images”)
+    f1 = open(request, 'rb') 
+    # storing image data in image variable 
+    image = f1.read() 
+    f1.close() 
         
-#     # converting image into byte array to 
-#     # perform encryption on it's data 
-#     image1 = bytearray(image) 
-#     # perform XOR operation on each value of bytearray 
-#     for index, values in enumerate(image1): 
-#         image1[index] = values ^ f 
+    # converting image into byte array to 
+    # perform encryption on it's data 
+    image1 = bytearray(image) 
+    # perform XOR operation on each value of bytearray 
+    for index, values in enumerate(image1): 
+        image1[index] = values ^ f 
    
-#     f2 = open(request, 'wb') 
+    f2 = open(request, 'wb') 
     
-#     f2.write(image1) 
-#     f2.close()
+    f2.write(image1) 
+    f2.close()
 
 # def encryptAudio(request):
 #     if request.method == 'POST':
