@@ -1,13 +1,13 @@
 from django.shortcuts import render,HttpResponse
-from tips.forms import UploadForm
-from tips.models import Uploads
+from tips.forms import MessageForm
+from tips.models import Message
 
 # Create your views here.
 
 def UploadView(request):
     context = {}
     if request.method == 'POST': 
-        form = UploadForm(request.POST,request.FILES) 
+        form =  MessageForm(request.POST,request.FILES) 
         if form.is_valid():
             form.save()
             context["message"] = "Successful"
@@ -15,7 +15,7 @@ def UploadView(request):
         else: 
             context["error"] = form.errors
     
-    context["form"] = UploadForm()
+    context["form"] =  MessageForm()
     return render(request, 'home.html', context)
 
 def record(request):

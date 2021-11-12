@@ -1,8 +1,8 @@
 from django import forms 
 # from tips import models
-from tips.models import Uploads
+from tips.models import Message
 
-class UploadForm(forms.ModelForm):
+class MessageForm(forms.ModelForm):
     description = forms.Textarea()
     video = forms.FileField(label="Video", required=False)
     audio = forms.FileField(label="Audio", required=False)
@@ -11,7 +11,7 @@ class UploadForm(forms.ModelForm):
     event_date = forms.DateTimeField(label="Accident Date", widget=forms.widgets.DateInput(attrs={'type': 'date'}), required=False)
 
     class Meta:
-        model = Uploads
+        model = Message
         fields = ("title", "description","video","audio","image", "location", "event_date")
         
 
