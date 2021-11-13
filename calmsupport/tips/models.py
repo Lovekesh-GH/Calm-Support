@@ -11,6 +11,7 @@ from encryption import encrypts
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
+from uuid import uuid4
 
 # Create your models here.
 CHOICES = (
@@ -121,7 +122,7 @@ class Chain(models.Model):
     def last_block(self):
         return self.block_set.order_by('index').last()
 
-    def create_seed(self, ammount_transferred, remaining_balance):
+    def create_seed(self, description, location):
         assert self.pk is not None
         seed = Block.generate_next(
             Block(hash=sha256('seed'.encode('utf-8')).hexdigest(),
@@ -172,7 +173,30 @@ class Chain(models.Model):
 
 def upload_image(instance, filename):
     ext = filename.split(".")[-1]
-    return "image/{}.{}".format(uuid4().hex, ext)
+    f = 34
+    encr = encrypts.encryptText(ext)
+    image = bytearray(encr) 
+    for index, values in enumerate(image): 
+        image[index] = values ^ f 
+    return "images/{}.{}".format(uuid4().hex, image)
+
+def upload_audio(instance, filename):
+    ext = filename.split(".")[-1]
+    f = 34
+    encr = encrypts.encryptText(ext)
+    audio = bytearray(encr) 
+    for index, values in enumerate(audio): 
+        audio[index] = values ^ f
+    return "audios/{}.{}".format(uuid4().hex,audio)
+
+def upload_video(instance, filename):
+    ext = filename.split(".")[-1]
+    f = 34
+    encr = encrypts.encryptText(ext)
+    video = bytearray(encr) 
+    for index, values in enumerate(video): 
+        video[index] = values ^ f
+    return "videos/{}.{}".format(uuid4().hex,video)
 
 def validate_video_extension(value):
     ext = os.path.splitext(value.name)[1]  
@@ -185,17 +209,15 @@ def validate_audio_extension(value):
     valid_extensions = ['.ogg', '.mp3', '.mp4', '.wav', '.aac','.mpeg']
     if not ext.lower() in valid_extensions:
         raise ValidationError('Unsupported file extension.')
-        
 
 class Message(models.Model):
     title = models.CharField(
         max_length=50, choices=CHOICES, null=False, default="Cyber Attack"
     )
     description = models.TextField()
-    video = models.FileField(upload_to='videos/',validators=[validate_video_extension])
-    audio  = models.FileField(upload_to='audios/',validators=[validate_audio_extension])
-    # image = models.ImageField(upload_to='images/')
-    image = models.ImageField(upload_to=upload_image)
+    video = models.FileField(max_length=1000,upload_to=upload_video,validators=[validate_video_extension])
+    audio  = models.FileField(max_length=1000,upload_to=upload_audio,validators=[validate_audio_extension])
+    image = models.ImageField(upload_to=upload_image,max_length=1000)
     location = models.CharField(max_length=100)
     event_date = models.DateTimeField()
 
@@ -203,8 +225,8 @@ class Message(models.Model):
         if self.description:
             self.description = encrypts.encryptText(self.description)
         if self.location:
-            self.location = encrypts.encryptText(self.location)       
-        print("inside save func")
+            self.location = encrypts.encryptText(self.location)
+       
         return super().save()    
 
     class Meta:
@@ -213,23 +235,4 @@ class Message(models.Model):
 
     def _str_(self):
         return self.title
-
-    @property
-    def get_absolute_image_url(self):
-        return "{0}{1}".format(settings.MEDIA_URL, self.image.url)
     
-    # def documents(self):
-    #     path = os.path.join(Settings.BASEDIR,“media”)
-    #     path = path + self.get_absolute_image_url
-    #     return encrypt
-
-# @receiver(post_save,sender=Uploads)
-# def encrypt_image(sender, *args, **kwargs):
-#     print('post save callback')
-#     # file = instance.audio.path
-#     print(sender.get_absolute_image_url)
-#     path = settings.MEDIA_ROOT
-#     path = path + sender.get_absolute_image_url
-#     print(path)
-#     return encryptImage(path)
-    # encrypts.encryptImage(sender.image, *args, **kwargs)
