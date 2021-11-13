@@ -1,5 +1,10 @@
 from cryptography.fernet import Fernet
-from .key import Key
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+Key = os.getenv("Key", "")
 
 def encryptText(s):
     f = Fernet(Key.encode())

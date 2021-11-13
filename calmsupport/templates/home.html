@@ -7,8 +7,6 @@
     <title>Calm Support</title>
     <style>
         body {
-/* background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat; */
-/* background: linear-gradient(to bottom, #202020, #111119); */
 background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
 height: 100vh;
 overflow: hidden;
@@ -18,8 +16,6 @@ display: -webkit-box;
 display: flex;
 }
 
-/* Here using -webkit, we make angle
-of 45 degree of falling star */
 .sky {
 position: relative;
 width: 100%;
@@ -28,7 +24,6 @@ height: 100%;
 transform: rotateZ(45deg);
 }
 
-/* Here we are making roundabout balls */
 .star {
 position: absolute;
 left: 50%;
@@ -46,7 +41,6 @@ animation: tail 3000ms ease-in-out infinite,
 	shooting 3000ms ease-in-out infinite;
 }
 
-/* Here we add before and after effect to star */
 .star::before,
 .star::after {
 content: "";
@@ -70,11 +64,6 @@ animation: shining 3000ms ease-in-out infinite;
 -webkit-transform: translateX(50%) rotateZ(-45deg);
 transform: translateX(50%) rotateZ(-45deg);
 }
-
-/* Here we are adding location of each
-nth-child, animations, delays, and
-before and after effects to each
-and every balls(stars) */
 .star:nth-child(1) {
 top: calc(50% - -119px);
 left: calc(50% - 43px);
@@ -186,8 +175,6 @@ animation-delay: 7000ms;
 animation-delay: 7000ms;
 }
 
-/* This code will help to generate
-effect in tail of star */
 @keyframes tail {
 0% {
 	width: 0;
@@ -200,8 +187,6 @@ effect in tail of star */
 }
 }
 
-/* This code will generate shining
-effect in head of star */
 @keyframes shining {
 0% {
 	width: 0;
@@ -213,9 +198,6 @@ effect in head of star */
 	width: 0;
 }
 }
-
-/* Here we are adding webkit-animation
-to head of star for shining */
 @-webkit-keyframes shining {
 0% {
 	width: 0;
@@ -227,9 +209,6 @@ to head of star for shining */
 	width: 0;
 }
 }
-
-/* Here we are adding webkit-animation
-to tail of star */
 @-webkit-keyframes tail {
 0% {
 	width: 0;
@@ -242,8 +221,6 @@ to tail of star */
 }
 }
 
-/* Here we are adding webkit-animation
-for shooting effect */
 @-webkit-keyframes shooting {
 0% {
 	-webkit-transform: translateX(0);
@@ -444,17 +421,6 @@ table td{
   animation-iteration-count: infinite;
   text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
 }
-/* .chrome {
-  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
-  background-image: -webkit-linear-gradient(-40deg, transparent 0%, transparent 40%, #fff 50%, transparent 60%, transparent 100%);
-  -webkit-background-size: 200px;
-  color: rgba(255, 255, 255, 0.3);
-  -webkit-background-clip: text;
-  -webkit-animation-name: shine;
-  -webkit-animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-  text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
-} */
 @keyframes shine {
   0%, 10% {
     background-position: -1000px;
@@ -526,35 +492,17 @@ table td{
 </head>
 <body>
     <div>
-        <!-- <H1>WELCOME TO CALM SUPPORT!</H1> -->
-        <!-- <div class="shine">WELCOME TO CALM SUPPORT!</div> -->
+
         <form method = "post" enctype="multipart/form-data" class="main-form"> 
             {% csrf_token %}  
             <table>
                 {{ form.as_table }}
             </table>
-            <!-- <button class="btn btn-success " type="submit">Save</button> -->
             <button class="btn draw-border" type="submit">Save</button>
-
-            <!-- <a href="{% url 'Record' %}" class="btn btn-1">Judges</a> -->
-            <!-- <button href="{% url 'Record' %}"  type="submit">Record</button> -->
         </form>
-    
-        <!-- <a class="btn btn-primary btn-lg" href="{% url 'Record' %}"></a>
-        <button class="button"  style=
-              "position:absolute; 
-              margin-left:-50px;
-              left:50%;
-              width:150px;
-              bottom:0px;">
-        Record  
-        </button>
-        </a> -->
         
     <div class="sky">
   
-        <!-- We are making divisions, every div.
-        represent a single roundabout balls -->
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
@@ -577,16 +525,6 @@ table td{
 </div>
 
 <div class="shine">WELCOME TO CALM SUPPORT!</div>
-<!-- <a class="btn btn-primary btn-lg" href="{% url 'Record' %}"></a>
-        <button class="button"  style=
-              "position:absolute; 
-              margin-left:-50px;
-              left:50%;
-              width:150px;
-              bottom:0px;">
-        Record  
-        </button>
-        </a> -->
         <a class="button"  style=
         "position:absolute; 
         margin-left:-65px;
