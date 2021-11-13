@@ -39,7 +39,7 @@ to Visit the Website.</span>
 ## 🔭 &nbsp; <span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">Description of the Project
 </span>
 
-><span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Step 1 :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Fetch tips of user via website - either video/picture, audio or text.
+><span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Step 1 :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Fetch tips of user via website -either video/picture, audio or text.
 </span>
 
 ![Home page](./images/2.jpg)
