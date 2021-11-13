@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+from PIL import Image
 from dotenv import load_dotenv
 import os
 
@@ -10,24 +11,17 @@ def encryptText(s):
     f = Fernet(Key.encode())
     return f.encrypt(s.encode())
 
-def encryptImage(request):
-    f = Fernet(Key.encode())
-    
-    path = upload_image(filename)
-    f1 = open(path, 'rb') 
-    
-    image = f1.read() 
-    f1.close() 
-        
+def encryptImage(path):
+    f = 34
+
+    image = Image.open(path).tobytes()
+
     image1 = bytearray(image) 
-    
+
     for index, values in enumerate(image1): 
         image1[index] = values ^ f 
-    
-    f2 = open(path, 'wb') 
-    
-    f2.write(image1) 
-    f2.close()
+
+    return image1
     
 
 def encryptAudio(filename, key):

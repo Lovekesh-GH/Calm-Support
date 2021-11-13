@@ -5,8 +5,6 @@
 ##  💼 &nbsp; <span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Theme :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Anonymous Defence Tips
 </span>
 
-----
-
  🛠 &nbsp;<span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">Tech Stack
 </span>
 
@@ -44,15 +42,15 @@ to Visit the Website.</span>
 ><span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Step 1 :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Fetch tips of user via website - either video/picture, audio or text.
 </span>
 
-![Home page](./calmsupport/images/2.jpg)
-![Home page](./calmsupport/images/3.jpg)
-![Home page](./calmsupport/images/4.jpg)
+![Home page](./images/2.jpg)
+![Home page](./images/3.jpg)
+![Home page](./images/4.jpg)
 
 
 ><span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Step 2 :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Encrypting the messages that can be decrypted only by admin having the required keys
 </span>
 
-![Home page](./calmsupport/images/1.png)
+![Home page](./images/1.png)
 
 ><span style="color: #f2cf4a; font-family: Babas; font-size: 1.4em;">**Step 3 :**</span><span style="color:#fff; font-family: 'Bebas Neue'; font-size: 1.2em;">  Decoding the message by admin and marking the message as spam or valid and taking required actions.
 

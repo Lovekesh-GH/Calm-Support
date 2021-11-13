@@ -179,6 +179,9 @@ def upload_image(instance, filename):
     for index, values in enumerate(image): 
         image[index] = values ^ f 
     return "images/{}.{}".format(uuid4().hex, image)
+# def upload_image(instance, filename):
+#     ext = filename.split(".")[-1]
+#     return "images/{}.{}".format(uuid4().hex, ext)
 
 def upload_audio(instance, filename):
     ext = filename.split(".")[-1]
@@ -226,7 +229,8 @@ class Message(models.Model):
             self.description = encrypts.encryptText(self.description)
         if self.location:
             self.location = encrypts.encryptText(self.location)
-       
+        # self.image = encrypts.encryptImage(self.image)
+
         return super().save()    
 
     class Meta:
